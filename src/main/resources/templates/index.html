@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Simple bobo url shortener</title>
+    <style>
+        .url-text {
+            display: block;
+            margin-left: 40%;
+            margin-right: 60%;
+            margin-top: 18%;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .url-input {
+            width: 15%;
+            height: 30px;
+        }
+
+        .send-button {
+            background-color: #04AA6D; /* Green */
+            border: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .result {
+            display: inline-block;
+            margin-left: 41%;
+            margin-right: 40%;
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+<div class="url-text">
+    <p>Make a short version of your url with our awesome Bobo url shortener!</p>
+    <form action="#" th:action="@{/short-url}" th:object="${createShortUrlRequest}" method="post">
+        <input class="url-input" type="text" th:field="*{initialUrl}" placeholder="Put your url here">
+        <input class="send-button" type="submit" value="Submit">
+    </form>
+</div>
+<p class="result" th:if="${shortUrl} != ''" th:text="${shortUrl}"/>
+</body>
